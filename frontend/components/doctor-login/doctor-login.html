@@ -1,0 +1,51 @@
+<div class="container mt-5" style="max-width: 450px;">
+  <div class="card shadow-sm p-4">
+    <h3 class="text-center mb-3">Doctor Login</h3>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}"
+        />
+        <div class="invalid-feedback">
+          Enter a valid email.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}"
+        />
+        <div class="invalid-feedback">
+          Enter a password (min 6 characters).
+        </div>
+      </div>
+
+      <!-- Server Error -->
+      <div *ngIf="errorMessage" class="alert alert-danger py-2">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Login Button -->
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="loginForm.invalid || loading"
+      >
+        <span *ngIf="!loading">Login</span>
+        <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+      </button>
+    </form>
+  </div>
+</div>
