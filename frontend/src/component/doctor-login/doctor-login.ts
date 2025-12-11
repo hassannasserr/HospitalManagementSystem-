@@ -8,8 +8,10 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-doctor-login',
+  standalone: true,
     imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './doctor-login.html'
+  templateUrl: './doctor-login.html',
+  styleUrls: ['./doctor-login.css'] 
 })
 export class DoctorLoginComponent {
   loginForm!: FormGroup;   // declare but don’t initialize

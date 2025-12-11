@@ -4,6 +4,8 @@ import { DoctorLoginComponent } from '../component/doctor-login/doctor-login';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-root',
+  standalone: true,
+
   imports: [RouterOutlet, DoctorLoginComponent, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
