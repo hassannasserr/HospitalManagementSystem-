@@ -1,0 +1,133 @@
+<div class="register-container">
+  <div class="register-form-container">
+    <div class="logo">
+      <img src="/weewa-logo.png" alt="weewa logo" />
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      <div class="register-form-heading">
+        <h2>User Registration</h2>
+        <p>Book appointments, buy medicines, and track your health.</p>
+      </div>
+
+      @if (submitSuccess) {
+      <div class="alert alert-success">
+        {{ submitSuccess }}
+      </div>
+      } @if (submitError) {
+      <div class="alert alert-error">
+        {{ submitError }}
+      </div>
+      }
+
+      <div class="input-group">
+        <label for="fullname">Full Name</label>
+        <input
+          type="text"
+          id="fullname"
+          formControlName="fullname"
+          placeholder="Enter your full name"
+          [class.error]="hasError('fullname')"
+        />
+        @if (hasError('fullname')) {
+        <span class="error-message">
+          {{ getErrorMessage('fullname') }}
+        </span>
+        }
+      </div>
+
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          [class.error]="hasError('email')"
+        />
+        @if (hasError('email')) {
+        <span class="error-message">
+          {{ getErrorMessage('email') }}
+        </span>
+        }
+      </div>
+
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          [class.error]="hasError('password')"
+        />
+        @if (hasError('password')) {
+        <span class="error-message">
+          {{ getErrorMessage('password') }}
+        </span>
+        }
+      </div>
+
+      <div class="input-group">
+        <label for="confirm-password">Re-type your Password</label>
+        <input
+          type="password"
+          id="confirm-password"
+          formControlName="confirmPassword"
+          placeholder="Re-type your password"
+          [class.error]="hasError('confirmPassword') || hasPasswordMismatch()"
+        />
+        @if (hasError('confirmPassword')) {
+        <span class="error-message">
+          {{ getErrorMessage('confirmPassword') }}
+        </span>
+        } @if (hasPasswordMismatch()) {
+        <span class="error-message">Passwords do not match</span>
+        }
+      </div>
+
+      <div class="input-group-row">
+        <div class="input-group">
+          <label for="gender">Gender</label>
+          <select id="gender" formControlName="gender" [class.error]="hasError('gender')">
+            <option value="" disabled selected>Select gender</option>
+            @for (gender of genderOptions; track gender) {
+            <option [value]="gender">
+              {{ gender }}
+            </option>
+            }
+          </select>
+          @if (hasError('gender')) {
+          <span class="error-message">
+            {{ getErrorMessage('gender') }}
+          </span>
+          }
+        </div>
+        <div class="input-group">
+          <label for="date-of-birth">Date Of Birth</label>
+          <input
+            type="date"
+            id="date-of-birth"
+            formControlName="dateOfBirth"
+            [class.error]="hasError('dateOfBirth')"
+          />
+          @if (hasError('dateOfBirth')) {
+          <span class="error-message">
+            {{ getErrorMessage('dateOfBirth') }}
+          </span>
+          }
+        </div>
+      </div>
+
+      <button type="submit" class="register-button" [disabled]="isSubmitting">
+        @if (!isSubmitting) {
+        <span>Sign Up</span>
+        } @else {
+        <span>Signing Up...</span>
+        }
+      </button>
+    </form>
+  </div>
+  <div class="register-img-container">
+    <img src="/weewa-register-image.png" alt="Registration Illustration" />
+  </div>
+</div>
