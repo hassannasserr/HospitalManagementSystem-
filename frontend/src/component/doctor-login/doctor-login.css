@@ -1,0 +1,46 @@
+.login-page {
+  background: #f6f7fb;
+}
+
+.logo {
+  /* Asset 5@4x 1 */
+
+position: absolute;
+width: 243px;
+height: 50.98px;
+left: 74px;
+top: 62px;
+background: url('/Weawa.png') no-repeat;
+
+}
+
+.form-control {
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #5b3df5;
+  border: none;
+  border-radius: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #4a30d6;
+}
+
+.image-wrapper {
+  height: 100%;
+  background: #f0f2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Gemini_Generated_Image_92xahz92xahz92xa 1 */
+

@@ -1,0 +1,82 @@
+<div class="login-page d-flex align-items-center justify-content-center min-vh-100 bg-light">
+  <div class="container-fluid">
+    <div class="row rounded-4 overflow-hidden bg-white">
+
+      <!-- LEFT: Login Form -->
+      <div class="col-md-5 p-5">
+        <!-- Logo -->
+        <div class="mb-4">
+          <img src="/Weewa.png" alt="Weewa" class="logo" />
+        </div>
+
+        <h2 class="fw-bold mb-1">Sign in</h2>
+        <p class="text-muted mb-4">Please login to continue to your account.</p>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label">E-mail</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="email"
+              placeholder="you@example.com"
+              [ngClass]="{ 'is-invalid': email.invalid && (email.touched || email.dirty) }"
+            />
+            <div class="invalid-feedback">Enter a valid email</div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="password"
+              placeholder="Enter Your Password"
+              [ngClass]="{ 'is-invalid': password.invalid && (password.touched || password.dirty) }"
+            />
+            <div class="invalid-feedback">Password must be at least 6 characters</div>
+          </div>
+
+          <!-- Keep me logged in -->
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" />
+            <label class="form-check-label">Keep me logged in</label>
+          </div>
+
+          <!-- Error -->
+          <div *ngIf="errorMessage" class="alert alert-danger py-2">
+            {{ errorMessage }}
+          </div>
+
+          <!-- Submit -->
+          <button
+            class="btn btn-primary w-100 py-2"
+            type="submit"
+            [disabled]="loginForm.invalid || loading"
+          >
+            <span *ngIf="!loading">Sign in</span>
+            <span *ngIf="loading" class="spinner-border spinner-border-sm"></span>
+          </button>
+        </form>
+
+        <div class="text-center mt-4">
+          <small class="text-muted">
+            Need an account?
+            <a href="#" class="fw-semibold">Create one</a>
+          </small>
+        </div>
+      </div>
+
+      <!-- RIGHT: Image -->
+      <div class="col-md-7 d-none d-md-block p-0">
+        <div class="image-wrapper">
+          <img src="/Login.png" alt="Login" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
